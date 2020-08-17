@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'editor.css' %}">
+    <title>InstEdit</title>
+  </head>
+  <body>
+    <div class="file-upload-section" onclick="selectImage()">
+      <input id='foto-file' type='file'>
+      Select Image
+    </div>
+    <div class="upper-buttons-section">
+      <table class="buttons-table">
+        <tr>
+          <td><button class="operation-btn" onclick="crop()">Crop</button> </td>
+          <td><button class="operation-btn" onclick="flipVertically()">Flip</button> </td>
+          <td><button class="operation-btn" onclick="displayRange()">Rotate <input type="range" id="display-range" min='0' max='300' onchange="rotate(this)" value="0"> </button> </td>
+        </tr>
+      </table>
+    </div>
+    <div class="img-container">
+      <img id='foto-image' class='image'/>
+    </div>
+    <div class="buttons-section">
+      <table class="buttons-table">
+        <tr>
+          <td><button class="operation-btn" onclick="makeGrayScale()">Grayscale</button></td>
+          <td><button class="operation-btn" onclick="makeBright()">Brighter</button></td>
+          <td><button class="operation-btn" onclick="makeDark()">Darker</button></td>
+        </tr>
+        <tr>
+          <td><button class="operation-btn" onclick="makeBlur()">Blur</button></td>
+          <td><button class="operation-btn" onclick="makeEmboss()">Emboss</button></td>
+          <td><button class="operation-btn" onclick="makeSharp()">Sharp</button></td>
+        </tr>
+        <tr>
+          <td><input type="color" id='color-picker' value='#000000' oninput="makeColorize(this)">
+            <button class="operation-btn" onclick="openColorPicker()">Colorize</button>
+          </td>
+          <td><input type="color" id='colorize-color-picker' value="#000000" oninput="applyColorFilter(this)">
+            <button class="operation-btn" onclick="openColorFilterPicker()">Color Filter</button>
+          </td>
+          <td><button class="operation-btn" onclick=""="makeTransparent()">
+            <div id='color-preview'></div>Transparent</button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3"><button class='operation-btn download-btn' onclick="download()">Download</button></td>
+        </tr>
+      </table>
+    </div>
+
+    <script type="text/javascript" src="{% static 'script.js' %}"></script>
+    <script src="https://rawcdn.githack.com/kousik19/foto.js/045defe1a5ce06220e084e4e6f6fbaccb7621841/foto.min.js"></script>
+  </body>
+</html>
